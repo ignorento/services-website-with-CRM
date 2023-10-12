@@ -5,7 +5,7 @@ class StatusCrm(models.Model):
     status_name = models.CharField(max_length=200, verbose_name='Status name')
 
     def __str__(self):
-        return self.Status_name
+        return self.status_name
 
     class Meta:
         verbose_name = 'Status'
@@ -24,3 +24,16 @@ class Order(models.Model):
     class Meta:
         verbose_name = 'Order'
         verbose_name_plural = 'Orders'
+
+
+class CommentCrm(models.Model):
+    comment_binding = models.ForeignKey(Order, on_delete=models.CASCADE, verbose_name='Required')
+    comment_text = models.TextField(verbose_name='Comment text')
+    comment_date = models.DateTimeField(auto_now=True, verbose_name='Date of creation')
+
+    def __str__(self):
+        return self.comment_text
+
+    class Meta:
+        verbose_name = 'Comment'
+        verbose_name_plural = 'Comments'
