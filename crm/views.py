@@ -24,8 +24,11 @@ def first_page(request):
 
 
 def thanks_page(request):
-    name = request.POST['name']
-    phone = request.POST['phone']
-    new_user = Order(order_name=name, order_phone=phone)
-    new_user.save()
-    return render(request, './thanks.html', {'name': name})
+    if request.POST:
+        name = request.POST['name']
+        phone = request.POST['phone']
+        new_user = Order(order_name=name, order_phone=phone)
+        new_user.save()
+        return render(request, './thanks.html', {'name': name})
+    else:
+        return render(request, './thanks.html')
