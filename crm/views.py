@@ -3,6 +3,7 @@ from .models import Order
 from .forms import OrderForm
 from slider.models import SliderContent
 from price.models import PriceTable, PriceCard
+from telebot.send_message import send_in_telegram
 
 
 def first_page(request):
@@ -29,6 +30,7 @@ def thanks_page(request):
         phone = request.POST['phone']
         new_user = Order(order_name=name, order_phone=phone)
         new_user.save()
+        send_in_telegram(tg_name=name, tg_phone=phone)
         return render(request, './thanks.html', {'name': name})
     else:
         return render(request, './thanks.html')
