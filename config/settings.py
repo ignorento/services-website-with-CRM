@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'crm',
     'slider',
     'price',
+    'telebot',
 ]
 
 MIDDLEWARE = [
