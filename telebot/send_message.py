@@ -49,10 +49,3 @@ def send_in_telegram(tg_name, tg_phone):
 
     else:
         pass
-
-
-
-
-
-
-
